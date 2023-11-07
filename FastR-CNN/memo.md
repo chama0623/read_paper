@@ -26,7 +26,7 @@ VOC2012データセットでmAPが68.4%でありSoTAを達成した. ただしVO
 
 ### 実行速度について
 学習についてはR-CNNがSモデルで22h, Mモデルで28h, Lモデルで84hだったのに対して, Fast R-CNNはSモデルで1.2h, Mモデルで2.0h, Lモデルで9.5hであった. Sモデルで18.3倍, Mモデルで14.0倍, Lモデルで8.8倍という高速化であるため, モデルを改良したことで1日程度かかった計算が1~5h程度に短縮できている. 
-テスト時については, R-CNNモデルがSモデルで9.8s/image, Mもモデルが12.1image/s, Lモデルが47image/sであったのに対してFast R-CNNはSモデルで0.10s/image, Mモデルは0.15s/image, Lモデルは0.32s/imageであるため3～10fps程度のリアルタイム検出も行える性能である.
+テスト時については, R-CNNモデルがSモデルで9.8s/image, Mもモデルが12.1image/s, Lモデルが47image/sであったのに対してFast R-CNNはSモデルで0.10s/image, Mモデルは0.15s/image, Lモデルは0.32s/imageであるため3～10fps程度のリアルタイム検出も行える性能である(この数字はおそらくCNN以降の部分の処理時間). 参考文献[2]によればFast R-CNNはRegion Proposalありで2.3s/image, なしで0.32s/imageらしい.
 
 ## 問題点
 - CNNは1画像に付き1回しか実行しないため計算コストの削減に寄与しているが, RoIの処理や分類・回帰の処理はRoIの数だけ行われるため計算コストとメモリ使用量が高いこと
@@ -34,3 +34,4 @@ VOC2012データセットでmAPが68.4%でありSoTAを達成した. ただしVO
 
 ## 参考文献
 [1] Ross Girshick, "Faster R-CNN"
+[2]https://ashutoshmakone.medium.com/fast-r-cnn-42c8b345d788#:~:text=R%2DCNN%20with%20VGG16%20takes,on%20PASCAL%20VOC%202102%20dataset.
