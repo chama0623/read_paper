@@ -5,6 +5,10 @@ SoTAを達成した物体認識ネットワークは物体の位置を仮説立�
 層が非常に深いVGG16によると, 提案手法のシステムは5fps(GPu使用)であり, 1枚の画像あたり300proposalでPASCAL VOC2007, 2012, MS COCO datasetsにおいてSoTAを達成した. ILSVRCとCOCO 2015ではFaster R-CNNとRPNがいくつかの部門で1位となったモデルの基礎となっている.
 
 ## 背景
+R-CNNからFast R-CNNで実行速度が最大213倍になったもののリアルタイム検出が実現できるスピードではない. 
+Fast R-CNNの処理時間はSelective Searchに2s/image, それ以外の処理に0.3s/image程度かかっており, Selective Search, すなわち領域提案処理がボトルネックになっている. Selective Searchの代替手法としてEdge Boxes(0.2s/image)を代表とする領域提案手法の採用が考えられるがend-to-endな学習を行うことはできない. 他方, Selective SearchはCPU処理による実装がなされており, これをGPUでの処理に変更することにより高速化が期待されるが, この方法でもend-to-endな学習を行うことはできない.  
+→ 領域提案もCNNにやらせればいいのでは?
+
 ## Faster R-CNNのアーキテクチャ
 ## 成果・性能
 ### 精度について
